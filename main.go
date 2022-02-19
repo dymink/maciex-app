@@ -8,13 +8,14 @@ import (
 )
 
 func main() {
-	// Start a new fiber app
-	app := fiber.New()
 	port := os.Getenv("PORT")
 
 	if port == "" {
 		log.Fatal("$PORT must be set")
 	}
+
+	// Start a new fiber app
+	app := fiber.New()
 
 	// Send a string back for GET calls to the endpoint "/"
 	app.Get("/", func(c *fiber.Ctx) error {
