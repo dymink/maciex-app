@@ -1,6 +1,7 @@
 package main
 
 import (
+	"log"
 	"os"
 
 	"github.com/gofiber/fiber/v2"
@@ -10,6 +11,10 @@ func main() {
 	// Start a new fiber app
 	app := fiber.New()
 	port := os.Getenv("PORT")
+
+	if port == "" {
+		log.Fatal("$PORT must be set")
+	}
 
 	// Send a string back for GET calls to the endpoint "/"
 	app.Get("/", func(c *fiber.Ctx) error {
